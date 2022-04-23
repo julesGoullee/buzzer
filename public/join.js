@@ -43,7 +43,7 @@ form.addEventListener('submit', (e) => {
     audioElement.currentTime = 0
     try {
       audioElement.play()
-      navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100])
+      navigator.vibrate([2000])
     } catch (err){
       console.error(err)
     }

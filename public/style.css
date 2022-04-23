@@ -13,7 +13,7 @@ body {
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   /* background: linear-gradient(-45deg, #a6f4e5 0%, #23e6bf 47%); */
   /* background-color: rgb(44, 75, 255); */
-  background-color: #fff;
+  background-color: rgb(246, 113, 3);
   color: #1A2634;
   text-align: center;
   height: 100vh;
@@ -70,8 +70,8 @@ header {
 }
 
 .buzzer-mode {
-  background-color: rgb(16, 21, 78);
-  color: rgb(243, 175, 185);
+  background-color: rgb(246, 113, 3);
+  color: black;
 }
 
 input[type="text"],
@@ -96,7 +96,6 @@ input[type="text"]:focus,
 input[type="number"]:focus,
 input[type="text"]:active,
 input[type="number"]:active {
-  border-color: #2c4bff;
   box-shadow: 0 0 0 3px #ABB7FF;
   outline: none;
 }
@@ -104,14 +103,10 @@ input[type="number"]:active {
 button {
   padding: 1.4em 1.4em;
   font-size: 1.2em;
-  background-color: #161D99;
-  color: #fff;
+  background-color: white;
+  color: black;
   cursor: pointer;
   border: 0;
-}
-
-button:hover {
-  background-color: rgb(22, 29, 153);
 }
 
 button:active {
@@ -129,17 +124,18 @@ button:focus {
 
 .buzzer {
   height: 10em;
+  width: 270px;
   font-size: 2em;
-  background-color: rgb(243, 175, 185);
+  background-size: contain;
   color: rgb(18, 30, 102);
-  animation: breathing 3s ease-out infinite;
+  animation: breathing 2s ease-out infinite;
 }
 .buzzer:focus {
   box-shadow: 0 0 0 3px #ABB7FF;
 }
 .buzzer:hover,
 .buzzer:active {
-  background-color: #e97284;
+  /*background-color: #e97284;*/
 }
 
 .secondary {
@@ -153,13 +149,24 @@ button:focus {
 
 @keyframes breathing {
   0% {
-    transform: scale(1)
+    transform: scale(1) rotateY(0deg);
+    background: url('pierre1.png');
+    background-size: contain;
+  }
+  49% {
+    transform: scale(0.7) rotateY(150deg);
+    background: url('pierre2.png');
+    background-size: contain;
   }
   50% {
-    transform: scale(0.7)
+    transform: scale(0.7) rotateY(150deg);
+    background: url('pierre2.png');
+    background-size: contain;
   }
   100% {
-    transform: scale(1)
+    transform: scale(1) rotateY(0deg);
+    background: url('pierre1.png');
+    background-size: contain;
   }
 }
 
@@ -187,4 +194,8 @@ button:focus {
   100% {
     transform: scale(1) rotate(0deg);
   }
+}
+
+.title{
+  font-size: 25px;
 }

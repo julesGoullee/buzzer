@@ -14,11 +14,11 @@ html
         input(type='text' name='team' placeholder="Nom d'équipe" required='required')
         button(type='submit')='Viens on est bien'
 
-      div.view.js-joined
-        button.js-buzzer.buzzer()='Buzz moi!!!'
-        div.chevre
-        p.js-joined-info=""
-        //button.js-edit.secondary='Change teams'
-
+  div.view.js-joined
+    div.title='PIB moi fort'
+    button.js-buzzer.buzzer()=''
+    div.chevre
+    p.js-joined-info=""
+    //button.js-edit.secondary='Change teams'
     script(src='/socket.io/socket.io.js')
     script(src='/join.js')

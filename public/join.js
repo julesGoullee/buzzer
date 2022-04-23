@@ -7,19 +7,18 @@ const joinedInfo = document.querySelector('.js-joined-info')
 const editInfo = document.querySelector('.js-edit')
 const chevre = document.querySelector('.chevre')
 
-const audioElement = new Audio('sheep.mp3');
+const audioElement = new Audio('chevre.mp3');
 
-let user = {}
+let team = ''
 
 const getUserInfo = () => {
-  user = JSON.parse(localStorage.getItem('user')) || {}
-  if (user.name) {
-    form.querySelector('[name=name]').value = user.name
-    form.querySelector('[name=team]').value = user.team
+  team = localStorage.getItem('team') || ''
+  if (team) {
+    form.querySelector('[name=team]').value = team
   }
 }
 const saveUserInfo = () => {
-  localStorage.setItem('user', JSON.stringify(user))
+  localStorage.setItem('team', team)
 }
 
 joined.style.display = 'none'
@@ -27,28 +26,30 @@ joined.style.display = 'none'
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
-  user.name = form.querySelector('[name=name]').value
-  user.team = form.querySelector('[name=team]').value
-  if (!user.id) {
-    user.id = Math.floor(Math.random() * new Date())
-  }
-  socket.emit('join', user)
+  team = form.querySelector('[name=team]').value
+  socket.emit('join', team)
   saveUserInfo()
-  joinedInfo.innerHTML = `<i>Joueur:</i> ${user.name}<br/><i>Equipe:</i>  ${user.team}`
+  joinedInfo.innerHTML = `<i>Equipe:</i>  ${team}`
   form.style.display = 'none'
   joined.style.display = 'flex'
   body.classList.add('buzzer-mode')
+
+  body.addEventListener('click', (e) => {
+    if(buzzer.style.display === 'none') return;
+    socket.emit('buzz', team)
+    chevre.classList.add('show-chevre')
+    chevre.classList.remove('hide-chevre')
+    buzzer.style.display = 'none'
+    audioElement.currentTime = 0
+    try {
+      audioElement.play()
+      navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100])
+    } catch (err){
+      console.error(err)
+    }
+  })
 })
 
-buzzer.addEventListener('click', (e) => {
-  socket.emit('buzz', user)
-  buzzer.style.display = 'none'
-  navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100])
-  audioElement.currentTime = 0
-  audioElement.play()
-  chevre.classList.remove('show-chevre')
-  chevre.classList.add('show-chevre')
-})
 
 socket.on('clear', () => {
   chevre.classList.remove('show-chevre')

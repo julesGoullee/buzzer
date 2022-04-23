@@ -15,11 +15,7 @@ socket.on('buzzes', (buzzes) => {
   audioElement.play();
 
   buzzList.innerHTML = buzzes
-    .map(buzz => {
-      const p = buzz.split('-')
-      return { name: p[0], team: p[1] }
-    })
-    .map(user => `<li>${user.name} on Team ${user.team}</li>`)
+    .map(team => `<li>${team}</li>`)
     .join('')
 })
 

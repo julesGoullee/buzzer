@@ -40,9 +40,9 @@ io.on('connection', (socket) => {
     console.log(`${user.name} buzzed in!`)
   })
 
-  socket.on('clear', () => {
+  socket.on('host-clear', () => {
     data.buzzes = new Set()
-    io.emit('buzzes', [...data.buzzes])
+    io.emit('clear')
     console.log(`Clear buzzes`)
   })
 })

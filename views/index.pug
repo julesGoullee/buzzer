@@ -6,21 +6,20 @@ html
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:500,700|Roboto:400,500,700,900")
     link(rel="stylesheet" href='/style.css')
   body.js-body
-    header
-      img.logo(src='/buzzer-logo.svg')
 
     div.container
       form.view.js-join
-        img(src="/lets-play.png" class="main-image")
-        h2="Let's play!"
-        input(type='text' name='name' placeholder='Your name' required='required')
-        input(type='number' name='team' placeholder='Your team number' required='required')
-        button(type='submit')='Join!'
+        img(src="/l.png" class="main-image")
+        h2="Tape ton nom ou je te tape"
+        input(type='text' name='name' placeholder='Nom' required='required')
+        input(type='number' name='team' placeholder='Equipe' required='required')
+        button(type='submit')='Viens on est bien'
 
-      div.view.js-joined.hidden
-        button.js-buzzer.buzzer()='Buzz!!!'
+      div.view.js-joined
+        button.js-buzzer.buzzer()='Buzz moi!!!'
+        div.chevre
         p.js-joined-info=""
-        button.js-edit.secondary='Change teams'
+        //button.js-edit.secondary='Change teams'
 
     script(src='/socket.io/socket.io.js')
     script(src='/join.js')
